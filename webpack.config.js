@@ -38,13 +38,7 @@ module.exports = {
     extensions: ['*', '.js', '.vue', '.json']
   },
   devServer: {
-    port: 9000,
-    historyApiFallback: true,
-    noInfo: true,
-    overlay: true
-  },
-  performance: {
-    hints: false
+    port: 8000,
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -52,6 +46,5 @@ module.exports = {
       template: 'index.html', // 이 플러그인을 안 붙히면 index.html에 script</dist 그거를 붙혀야한다.
     }),
     new VueLoaderPlugin(),
-    new webpack.HotModuleReplacementPlugin()
   ]
 }
