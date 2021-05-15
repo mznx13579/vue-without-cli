@@ -1,6 +1,6 @@
 <template>
-  <div id="app-vue">
-    {{ message }}
+  <div id="app">
+    {{ message }}gs
   </div>
 </template>
 
@@ -10,13 +10,14 @@ export default {
     return {
       message: 'Hello World',
     };
-  }
+  },
 };
 </script>
 
 <style>
 #app {
   font-size: 18px;
+  font-family: 'Roboto', sans-serif;
   color: blue;
 }
 </style>
