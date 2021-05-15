@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
@@ -21,9 +22,7 @@ module.exports = {
       },
       {
         test: /\.vue$/,
-        loader: [
-          'vue-loader',
-        ]
+        loader: 'vue-loader',
       },
       {
         test: /\.js$/,
@@ -32,13 +31,27 @@ module.exports = {
       },
     ]
   },
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js' // vue$ 쟤로 가겠다는 거 
+    },
+    extensions: ['*', '.js', '.vue', '.json']
+  },
   devServer: {
     port: 9000,
+    historyApiFallback: true,
+    noInfo: true,
+    overlay: true
+  },
+  performance: {
+    hints: false
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      // index.html 템플릿을 기반으로 빌드 결과물을 추가해줌
+      template: 'index.html', // 이 플러그인을 안 붙히면 index.html에 script</dist 그거를 붙혀야한다.
     }),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new webpack.HotModuleReplacementPlugin()
   ]
 }
