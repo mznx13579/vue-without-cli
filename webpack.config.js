@@ -1,14 +1,12 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const webpack = require('webpack');
 
 module.exports = {
-  mode: 'development',
+  mode: 'none',
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
     filename: 'build.js'
   },
   module: {
@@ -42,8 +40,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      // index.html 템플릿을 기반으로 빌드 결과물을 추가해줌
       template: 'index.html', // 이 플러그인을 안 붙히면 index.html에 script</dist 그거를 붙혀야한다.
+      // index.html 템플릿을 기반으로 빌드 결과물을 추가해줌
     }),
     new VueLoaderPlugin(),
   ]
