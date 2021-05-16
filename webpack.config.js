@@ -7,6 +7,7 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
+    //public path 없애야함
     filename: 'build.js'
   },
   module: {
